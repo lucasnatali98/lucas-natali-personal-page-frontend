@@ -14,6 +14,73 @@
       rgba(17, 29, 31, 1) 100%
     );
     background-size: 100% 100%;
+  
+  }
+}
+
+
+
+@layer utilities {
+  
+  .hover-navbar {
+    @apply relative inline-block text-lg;
+  }
+
+  .hover-navbar::after,
+  .hover-navbar::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--hover-navbar-gradient);
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.2s ease-out;
+  }
+
+  .hover-navbar::after {
+    bottom: -5px;
+    transform-origin: left;
+  }
+
+  .hover-navbar::before {
+    top: -5px;
+    transform-origin: right;
+  }
+
+  .hover-navbar:hover::after {
+    transform: scaleX(1);
+  }
+
+.hover-underline {
+    @apply relative inline-block text-2xl;
+  }
+
+  .hover-underline::after,
+  .hover-underline::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--hover-underline-gradient);
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.4s ease-out;
+  }
+
+  .hover-underline::after {
+    bottom: -5px;
+    transform-origin: right;
+  }
+
+  .hover-underline::before {
+    top: -5px;
+    transform-origin: left;
+  }
+
+  .hover-underline:hover::after,
+  .hover-underline:hover::before {
+    transform: scaleX(1);
   }
 }
 
@@ -25,7 +92,6 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0);
   font-synthesis: none;
-
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -36,16 +102,16 @@ a {
   color: white;
   text-decoration: inherit;
 }
-a:hover {
-  color: #535bf2;
-}
 
-body {
+
+html, body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
 }
 
 h1 {
@@ -71,6 +137,7 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
 
 @media (prefers-color-scheme: light) {
   :root {
