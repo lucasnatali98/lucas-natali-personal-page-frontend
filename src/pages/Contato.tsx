@@ -1,17 +1,17 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const Contato = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Aqui você pode implementar a lógica de envio do formulário
-    console.log('Form data:', formData);
+    console.log("Form data:", formData);
   };
 
   const handleChange = (
@@ -28,7 +28,27 @@ const Contato = () => {
     <div className="min-h-screen pt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Contato</h1>
+          <div className="mb-8">
+            <h1
+              className="hover-underline font-bold "
+              style={
+                {
+                  "--hover-underline-gradient":
+                    "linear-gradient(to right, #3b82f6, #9333ea)",
+                } as React.CSSProperties
+              }
+            >
+              <span
+                style={{
+                  background: "linear-gradient(to right, #f6a472, #ff914d)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Contato
+              </span>
+            </h1>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
@@ -36,8 +56,9 @@ const Contato = () => {
                 Entre em Contato
               </h2>
               <p className="text-gray-600 dark:text-gray-300 mb-6">
-                Estou sempre aberto a novas oportunidades e parcerias. Sinta-se à vontade para
-                entrar em contato comigo através do formulário ou diretamente pelos canais abaixo.
+                Estou sempre aberto a novas oportunidades e parcerias. Sinta-se
+                à vontade para entrar em contato comigo através do formulário ou
+                diretamente pelos canais abaixo.
               </p>
 
               <div className="space-y-4">
@@ -58,7 +79,7 @@ const Contato = () => {
                     </svg>
                   }
                   title="Email"
-                  content="contato@exemplo.com"
+                  content="lucasnatali16@gmail.com"
                 />
                 <ContactInfo
                   icon={
@@ -83,16 +104,16 @@ const Contato = () => {
                     </svg>
                   }
                   title="Localização"
-                  content="São Paulo, Brasil"
+                  content="Minas Gerais, Brasil"
                 />
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6  ">
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  className="block text-sm font-bold text-white dark:text-white"
                 >
                   Nome
                 </label>
@@ -100,9 +121,10 @@ const Contato = () => {
                   type="text"
                   id="name"
                   name="name"
+                  placeholder="Digite seu nome"
                   value={formData.name}
                   onChange={handleChange}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  className="mt-1 p-1 block w-full border-b border-white focus:border-blue-950 focus:ring-blue-950 dark:bg-black dark:border-gray-600 dark:text-white"
                   required
                 />
               </div>
@@ -110,7 +132,7 @@ const Contato = () => {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  className="block text-sm font-bold text-white dark:text-white"
                 >
                   Email
                 </label>
@@ -118,9 +140,10 @@ const Contato = () => {
                   type="email"
                   id="email"
                   name="email"
+                  placeholder="Digite seu email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  className="mt-1 p-1 block w-full border-b border-white focus:border-blue-500 focus:ring-blue-500 dark:bg-black dark:border-gray-600 dark:text-white"
                   required
                 />
               </div>
@@ -128,7 +151,7 @@ const Contato = () => {
               <div>
                 <label
                   htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  className="block text-sm font-bold text-white dark:text-white"
                 >
                   Assunto
                 </label>
@@ -136,9 +159,10 @@ const Contato = () => {
                   type="text"
                   id="subject"
                   name="subject"
+                  placeholder="Qual o motivo do contato?"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  className="mt-1 p-1 block w-full border-b border-white focus:border-blue-500 focus:ring-blue-500 dark:bg-black dark:border-gray-600 dark:text-white"
                   required
                 />
               </div>
@@ -146,17 +170,18 @@ const Contato = () => {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  className="block text-sm font-bold text-white dark:text-white"
                 >
                   Mensagem
                 </label>
                 <textarea
                   id="message"
                   name="message"
+                  placeholder="Me conte como posso te ajudar"
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  className="mt-1 p-1 block w-full border-b border-white focus:border-blue-500 focus:ring-blue-500 dark:bg-black dark:border-gray-600 dark:text-white"
                   required
                 />
               </div>
@@ -187,10 +212,12 @@ const ContactInfo = ({
   <div className="flex items-start space-x-3">
     <div className="flex-shrink-0 text-blue-600 dark:text-blue-400">{icon}</div>
     <div>
-      <h3 className="text-sm font-medium text-gray-900 dark:text-white">{title}</h3>
+      <h3 className="text-sm font-medium text-gray-900 dark:text-white">
+        {title}
+      </h3>
       <p className="text-sm text-gray-600 dark:text-gray-300">{content}</p>
     </div>
   </div>
 );
 
-export default Contato; 
+export default Contato;

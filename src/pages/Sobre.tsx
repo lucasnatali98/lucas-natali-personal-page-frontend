@@ -3,17 +3,27 @@ const Sobre = () => {
     <div className="min-h-screen pt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="max-w-3xl mx-auto">
-          <h1
-            className="hover-underline text-3xl font-bold text-gray-900 dark:text-amber-500 mb-8"
-            style={
-              {
-                "--hover-underline-gradient":
-                  "linear-gradient(to right, #4f46e5, #3b82f6)",
-              } as React.CSSProperties
-            }
-          >
-            Sobre Mim
-          </h1>
+          <div className="mb-8">
+            <h1
+              className="hover-underline font-bold "
+              style={
+                {
+                  "--hover-underline-gradient":
+                    "linear-gradient(to right, #3b82f6, #9333ea)",
+                } as React.CSSProperties
+              }
+            >
+              <span
+                style={{
+                  background: "linear-gradient(to right, #f6a472, #ff914d)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Sobre
+              </span>
+            </h1>
+          </div>
 
           <div className="prose dark:prose-invert max-w-none">
             <section className="flex flex-col md:flex-row items-center gap-6">
@@ -30,9 +40,27 @@ const Sobre = () => {
               </p>
             </section>
 
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-amber-500 mt-8 mb-4">
-              Habilidades
-            </h2>
+            <div className="mb-8 pt-14">
+              <h1
+                className="hover-underline font-bold "
+                style={
+                  {
+                    "--hover-underline-gradient":
+                      "linear-gradient(to right, #3b82f6, #9333ea)",
+                  } as React.CSSProperties
+                }
+              >
+                <span
+                  style={{
+                    background: "linear-gradient(to right, #f6a472, #ff914d)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  Habilidades
+                </span>
+              </h1>
+            </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               <SkillCard
                 title="Frontend"
@@ -48,9 +76,27 @@ const Sobre = () => {
               />
             </div>
 
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
-              Experiência
-            </h2>
+            <div className="mb-8 pt-14">
+              <h1
+                className="hover-underline font-bold "
+                style={
+                  {
+                    "--hover-underline-gradient":
+                      "linear-gradient(to right, #3b82f6, #9333ea)",
+                  } as React.CSSProperties
+                }
+              >
+                <span
+                  style={{
+                    background: "linear-gradient(to right, #f6a472, #ff914d)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  Experiências
+                </span>
+              </h1>
+            </div>
             <div className="space-y-6">
               <ExperienceCard
                 title="Desenvolvedor Full Stack"
@@ -75,12 +121,20 @@ const Sobre = () => {
 const SkillCard = ({ title, skills }: { title: string; skills: string[] }) => (
   <div className="p-4 rounded-lg shadow transition-transform transform hover:scale-100 hover:shadow-lg hover:bg-gray-800 hover:bg-opacity-80">
     <h3 className="text-lg font-semibold text-gray-900 dark:text-amber-500 mb-3">
-      {title}
+      <span
+        style={{
+          background: "linear-gradient(to right, #f6a472, #ff914d)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}
+      >
+        {title}
+      </span>
     </h3>
     <ul className="space-y-2">
       {skills.map((skill) => (
-        <li key={skill} className="dark:text-white">
-          {skill}
+        <li key={skill} className="dark:text-white typewriter">
+          <h6>{skill}</h6>
         </li>
       ))}
     </ul>
@@ -100,9 +154,17 @@ const ExperienceCard = ({
 }) => (
   <div className="p-6 rounded-lg shadow">
     <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-      {title}
+      <span
+        style={{
+          background: "linear-gradient(to right, #f6a472, #ff914d)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}
+      >
+        {title}
+      </span>
     </h3>
-    <p className="text-blue-600 dark:text-blue-400">{company}</p>
+    <p className="text-white dark:text-gray-200">{company}</p>
     <p className="text-gray-500 dark:text-gray-400 text-sm mb-3">{period}</p>
     <p className="text-gray-600 dark:text-gray-300">{description}</p>
   </div>

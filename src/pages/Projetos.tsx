@@ -31,17 +31,27 @@ const Projetos = () => {
   return (
     <div className="min-h-screen pt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1
-          className="hover-underline text-3xl font-bold text-gray-900 dark:text-white mb-8"
-          style={
-            {
-              "--hover-underline-gradient":
-                "linear-gradient(to right, #3b82f6, #9333ea)",
-            } as React.CSSProperties
-          }
-        >
-          Projetos
-        </h1>
+        <div className="mb-8">
+          <h1
+            className="hover-underline font-bold "
+            style={
+              {
+                "--hover-underline-gradient":
+                  "linear-gradient(to right, #3b82f6, #9333ea)",
+              } as React.CSSProperties
+            }
+          >
+            <span
+              style={{
+                background: "linear-gradient(to right, #f6a472, #ff914d)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              Projetos
+            </span>
+          </h1>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (

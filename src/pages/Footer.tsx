@@ -1,92 +1,40 @@
 export const Footer = () => {
   return (
-    <div className="absolute top-10/12 flex flex-col justify-center items-center w-full px-4 py-12 md:px-60 lg:px-96">
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-6">
-        <a
-          href="https://www.instagram.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover-navbar text-sm"
-          style={
-            {
-              "--hover-navbar-gradient":
-                "linear-gradient(to right, #3b82f6, #9333ea)",
-            } as React.CSSProperties
-          }
-        >
-          Instagram
-        </a>
-        <a
-          href="https://www.linkedin.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover-navbar text-sm"
-          style={
-            {
-              "--hover-navbar-gradient":
-                "linear-gradient(to right, #3b82f6, #9333ea)",
-            } as React.CSSProperties
-          }
-        >
-          LinkedIn
-        </a>
-        <a
-          href="https://www.youtube.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover-navbar text-sm"
-          style={
-            {
-              "--hover-navbar-gradient":
-                "linear-gradient(to right, #3b82f6, #9333ea)",
-            } as React.CSSProperties
-          }
-        >
-          YouTube
-        </a>
-        <a
-          href="https://www.twitter.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover-navbar text-sm"
-          style={
-            {
-              "--hover-navbar-gradient":
-                "linear-gradient(to right, #3b82f6, #9333ea)",
-            } as React.CSSProperties
-          }
-        >
-          Twitter
-        </a>
-        <a
-          href="https://www.facebook.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover-navbar text-sm"
-          style={
-            {
-              "--hover-navbar-gradient":
-                "linear-gradient(to right, #3b82f6, #9333ea)",
-            } as React.CSSProperties
-          }
-        >
-          Facebook
-        </a>
-        <a
-          href="https://www.github.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover-navbar"
-          style={
-            {
-              "--hover-navbar-gradient":
-                "linear-gradient(to right, #3b82f6, #9333ea)",
-            } as React.CSSProperties
-          }
-        >
-          GitHub
-        </a>
+    <footer className="w-full px-4 py-12 flex justify-center items-center">
+      <div className="flex flex-wrap justify-center gap-4 max-w-6xl w-full">
+        {[
+          { name: "Instagram", url: "https://www.instagram.com" },
+          { name: "LinkedIn", url: "https://www.linkedin.com" },
+          { name: "YouTube", url: "https://www.youtube.com" },
+          { name: "Twitter", url: "https://www.twitter.com" },
+          { name: "Facebook", url: "https://www.facebook.com" },
+          { name: "GitHub", url: "https://www.github.com" },
+        ].map((social) => (
+          <a
+            key={social.name}
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover-navbar text-sm min-w-[100px] text-center"
+            style={
+              {
+                "--hover-navbar-gradient":
+                  "linear-gradient(to right, #3b82f6, #9333ea)",
+              } as React.CSSProperties
+            }
+          >
+            <span
+              style={{
+                background: "linear-gradient(to right, #f6a472, #ff914d)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              {social.name}
+            </span>
+          </a>
+        ))}
       </div>
-    </div>
+    </footer>
   );
 };

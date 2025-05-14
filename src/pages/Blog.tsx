@@ -29,17 +29,27 @@ const Blog = () => {
   return (
     <div className="min-h-screen pt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1
-          className="hover-underline text-3xl font-bold text-gray-900 dark:text-white mb-8"
-          style={
-            {
-              "--hover-underline-gradient":
-                "linear-gradient(to right, #3b82f6, #9333ea)",
-            } as React.CSSProperties
-          }
-        >
-          Blog
-        </h1>
+        <div className="mb-8">
+          <h1
+            className="hover-underline font-bold px-5"
+            style={
+              {
+                "--hover-underline-gradient":
+                  "linear-gradient(to right, #3b82f6, #9333ea)",
+              } as React.CSSProperties
+            }
+          >
+            <span
+              style={{
+                background: "linear-gradient(to right, #f6a472, #ff914d)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              Blog
+            </span>
+          </h1>
+        </div>
 
         <div className="grid gap-8">
           {posts.map((post) => (
@@ -66,7 +76,7 @@ const BlogPost = ({
 }) => (
   <article className="bg-whiterounded-lg shadow-lg p-6  transition duration-300 hover:scale-101 border border:opacity-90">
     <div className="flex items-center gap-4 mb-4">
-      <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">
+      <span className="px-3 py-1 bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-white rounded-full text-sm">
         {category}
       </span>
       <span className="text-gray-500 dark:text-gray-400 text-sm">
@@ -78,7 +88,15 @@ const BlogPost = ({
     </div>
 
     <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">
-      {title}
+      <span
+        style={{
+          background: "linear-gradient(to right, #f6a472, #ff914d)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}
+      >
+        {title}
+      </span>
     </h2>
 
     <p className="text-gray-600 dark:text-gray-300 mb-4">{excerpt}</p>
