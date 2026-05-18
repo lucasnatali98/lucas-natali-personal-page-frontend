@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Blog = () => {
   const posts = [
     {
@@ -7,6 +9,7 @@ const Blog = () => {
       date: "2024-03-15",
       readTime: "5 min",
       category: "React",
+      url: "/blog/introducao-react-hooks",
     },
     {
       title: "TypeScript: Por que usar?",
@@ -15,6 +18,7 @@ const Blog = () => {
       date: "2024-03-10",
       readTime: "7 min",
       category: "TypeScript",
+      url: "/blog/typescript-por-que-usar",
     },
     {
       title: "Tailwind CSS: Estilizando com utilidades",
@@ -23,6 +27,7 @@ const Blog = () => {
       date: "2024-03-05",
       readTime: "6 min",
       category: "CSS",
+      url: "/blog/tailwind-css-estilizando-com-utilidades",
     },
   ];
 
@@ -67,12 +72,14 @@ const BlogPost = ({
   date,
   readTime,
   category,
+  url,
 }: {
   title: string;
   excerpt: string;
   date: string;
   readTime: string;
   category: string;
+  url: string;
 }) => (
   <article className="bg-whiterounded-lg shadow-lg p-6  transition duration-300 hover:scale-101 border border:opacity-90">
     <div className="flex items-center gap-4 mb-4">
@@ -101,12 +108,12 @@ const BlogPost = ({
 
     <p className="text-gray-600 dark:text-gray-300 mb-4">{excerpt}</p>
 
-    <a
-      href="#"
+    <Link
+      to={url}
       className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium"
     >
       Ler mais →
-    </a>
+    </Link>
   </article>
 );
 
