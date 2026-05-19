@@ -588,20 +588,14 @@ section { position: relative; padding: 100px 0; }
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid var(--border);
-  background:
-    repeating-linear-gradient(45deg,
-      var(--surface) 0, var(--surface) 8px,
-      var(--surface-2) 8px, var(--surface-2) 16px);
   font-family: var(--font-mono);
 }
-.about-photo::after {
-  content: "// retrato — substituir";
-  position: absolute; bottom: 14px; left: 14px;
-  font-size: 11px; color: var(--text-dim);
-  padding: 4px 10px;
-  background: rgba(0, 0, 0, 0.8);
-  border: 1px solid var(--border);
-  border-radius: 3px;
+.about-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
 }
 .about-photo-tag {
   position: absolute; top: 14px; left: 14px;

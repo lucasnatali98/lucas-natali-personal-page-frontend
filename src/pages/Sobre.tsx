@@ -12,6 +12,7 @@ export default function Sobre() {
 
         <div className="about-grid" style={{ marginTop: 64 }}>
           <div className="about-photo reveal">
+            <img src="/foto_pessoal.png" alt="Lucas Natali" className="about-photo-img" />
             <span className="about-photo-tag">LN · 2026</span>
           </div>
 
