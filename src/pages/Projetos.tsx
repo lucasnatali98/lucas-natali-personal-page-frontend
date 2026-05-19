@@ -1,8 +1,10 @@
-import { projects } from "../data/portfolio";
+import { useProjects } from "../hooks/useProjects";
 import { Icon } from "../components/Icon";
 import { Tag, ProjectCover } from "../components/primitives";
 
 export default function Projetos() {
+  const { projects, loading } = useProjects();
+
   return (
     <section id="projetos">
       <div className="container">
@@ -29,32 +31,40 @@ export default function Projetos() {
           </a>
         </div>
 
-        <div className="projects-grid">
-          {projects.map((p, i) => (
-            <article key={p.title} className="project reveal" data-hover>
-              <div className="project-cover">
-                <span className="project-tag">{p.tag}</span>
-                <span className="project-arrow">{Icon.arrow}</span>
-                <ProjectCover kind={p.cover} />
-                <span className="project-cover-label">{p.label}</span>
-              </div>
-              <div className="project-body">
-                <div className="project-meta">
-                  <span>
-                    {String(i + 1).padStart(2, "0")} /{" "}
-                    {projects.length.toString().padStart(2, "0")}
-                  </span>
-                  <span>case study →</span>
+        {loading ? (
+          <div className="projects-grid">
+            {[...Array(4)].map((_, i) => (
+              <article key={i} className="project reveal" style={{ opacity: 0.4 }} />
+            ))}
+          </div>
+        ) : (
+          <div className="projects-grid">
+            {projects.map((p, i) => (
+              <article key={p.title} className="project reveal" data-hover>
+                <div className="project-cover">
+                  <span className="project-tag">{p.tag}</span>
+                  <span className="project-arrow">{Icon.arrow}</span>
+                  <ProjectCover kind={p.cover} />
+                  <span className="project-cover-label">{p.label}</span>
                 </div>
-                <h3 className="project-title">{p.title}</h3>
-                <p className="project-desc">{p.desc}</p>
-                <div className="project-techs">
-                  {p.techs.map((t) => <Tag key={t}>{t}</Tag>)}
+                <div className="project-body">
+                  <div className="project-meta">
+                    <span>
+                      {String(i + 1).padStart(2, "0")} /{" "}
+                      {projects.length.toString().padStart(2, "0")}
+                    </span>
+                    <span>case study →</span>
+                  </div>
+                  <h3 className="project-title">{p.title}</h3>
+                  <p className="project-desc">{p.desc}</p>
+                  <div className="project-techs">
+                    {p.techs.map((t) => <Tag key={t}>{t}</Tag>)}
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
+              </article>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

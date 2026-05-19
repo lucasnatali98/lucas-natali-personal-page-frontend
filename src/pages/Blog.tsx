@@ -1,7 +1,9 @@
-import { posts } from "../data/portfolio";
+import { usePosts } from "../hooks/usePosts";
 import { Icon } from "../components/Icon";
 
 export default function Blog() {
+  const { posts, loading } = usePosts();
+
   return (
     <section id="blog">
       <div className="container">
@@ -29,20 +31,26 @@ export default function Blog() {
         </div>
 
         <div className="blog-list reveal">
-          {posts.map((p) => (
-            <a href="#" key={p.num} className="blog-post" data-hover>
-              <span className="blog-num">{p.num} · post</span>
-              <div className="blog-title-wrap">
-                <h3 className="blog-title">{p.title}</h3>
-                <span className="blog-excerpt">{p.excerpt}</span>
-              </div>
-              <span className="blog-meta">
-                <strong>{p.date}</strong>
-                {p.read}
-              </span>
-              <span className="blog-arrow">{Icon.arrowRight}</span>
-            </a>
-          ))}
+          {loading ? (
+            <div style={{ opacity: 0.4, padding: "2rem 0" }}>Carregando posts...</div>
+          ) : posts.length === 0 ? (
+            <div style={{ opacity: 0.5, padding: "2rem 0" }}>Nenhum post publicado ainda.</div>
+          ) : (
+            posts.map((p) => (
+              <a href="#" key={p.num} className="blog-post" data-hover>
+                <span className="blog-num">{p.num} · post</span>
+                <div className="blog-title-wrap">
+                  <h3 className="blog-title">{p.title}</h3>
+                  <span className="blog-excerpt">{p.excerpt}</span>
+                </div>
+                <span className="blog-meta">
+                  <strong>{p.date}</strong>
+                  {p.read}
+                </span>
+                <span className="blog-arrow">{Icon.arrowRight}</span>
+              </a>
+            ))
+          )}
         </div>
       </div>
     </section>

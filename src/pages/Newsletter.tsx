@@ -1,23 +1,35 @@
 import { useState, useRef, type FormEvent } from "react";
 import { Icon } from "../components/Icon";
+import api from "../lib/api";
 
 export default function Newsletter() {
-  const [status, setStatus] = useState<"idle" | "loading" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("loading");
-    // TODO: trocar pelo endpoint real da newsletter
-    setTimeout(() => {
+    setErrorMsg("");
+
+    try {
+      await api.post("/newsletter/subscribe", {
+        name: nameRef.current?.value,
+        email: emailRef.current?.value,
+      });
       setStatus("sent");
       setTimeout(() => {
         setStatus("idle");
         if (nameRef.current) nameRef.current.value = "";
         if (emailRef.current) emailRef.current.value = "";
       }, 3000);
-    }, 800);
+    } catch (err: any) {
+      const msg = err?.response?.data?.error ?? "Erro ao inscrever. Tente novamente.";
+      setErrorMsg(msg);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+    }
   };
 
   const busy = status === "loading" || status === "sent";
@@ -62,6 +74,7 @@ export default function Newsletter() {
                 />
               </div>
             </div>
+
             <button
               type="submit"
               className={`form-submit newsletter-btn ${status === "sent" ? "is-sent" : ""}`}
@@ -76,6 +89,13 @@ export default function Newsletter() {
                 <>{Icon.arrowRight} Inscrever na newsletter</>
               )}
             </button>
+
+            {status === "error" && (
+              <p style={{ color: "var(--clr-accent)", marginTop: 8, fontSize: "0.85rem" }}>
+                {errorMsg}
+              </p>
+            )}
+
             <p className="newsletter-fine">
               Sem spam. Cancele quando quiser. Seus dados ficam seguros.
             </p>
