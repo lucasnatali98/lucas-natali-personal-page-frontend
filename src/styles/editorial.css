@@ -897,6 +897,87 @@ section { position: relative; padding: 100px 0; }
 }
 
 /* =========================================================
+   NEWSLETTER
+   ========================================================= */
+.newsletter-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.newsletter-card::before {
+  content: "";
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-soft), transparent 70%);
+  pointer-events: none;
+}
+.newsletter-card::after {
+  content: "POST /api/newsletter";
+  position: absolute;
+  top: 20px; right: 24px;
+  font-family: var(--font-mono);
+  font-size: 10px; color: var(--accent);
+  letter-spacing: 0.06em; opacity: 0.5;
+}
+
+.newsletter-title {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.5vw, 42px);
+  font-weight: 700; line-height: 1.15;
+  color: var(--text);
+  margin: 12px 0 20px;
+}
+.newsletter-title em { color: var(--accent); font-style: normal; }
+
+.newsletter-desc {
+  font-size: 14px; line-height: 1.75;
+  color: var(--text-muted); max-width: 360px;
+}
+
+.newsletter-form { font-family: var(--font-mono); }
+
+.newsletter-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.newsletter-btn {
+  width: 100%;
+  margin-top: 0;
+}
+
+.newsletter-fine {
+  font-family: var(--font-mono);
+  font-size: 11px; color: var(--text-dim);
+  letter-spacing: 0.03em; margin-top: 10px;
+  text-align: center;
+}
+.newsletter-fine::before { content: "// "; color: var(--text-faint); }
+
+@media (max-width: 900px) {
+  .newsletter-card {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 36px 24px;
+  }
+  .newsletter-card::after { display: none; }
+}
+@media (max-width: 560px) {
+  .newsletter-fields { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
    CONTATO
    ========================================================= */
 .contact-grid {

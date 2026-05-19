@@ -8,6 +8,7 @@ import TerminalSkills from "./pages/TerminalSkills";
 import TerminalExperiencias from "./pages/TerminalExperiencias";
 import Projetos from "./pages/Projetos";
 import Blog from "./pages/Blog";
+import Newsletter from "./pages/Newsletter";
 import Contato from "./pages/Contato";
 import { navItems } from "./data/portfolio";
 
@@ -47,6 +48,7 @@ function App() {
         <TerminalExperiencias />
         <Projetos />
         <Blog />
+        <Newsletter />
         <Contato />
         <Footer />
       </div>
