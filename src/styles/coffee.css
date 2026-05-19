@@ -1,0 +1,435 @@
+/* =========================================================
+   REFINED COFFEE MACHINE — Editorial Dark Edition
+   Compact espresso machine that fits within ~280×320
+   Color palette tuned to dark + orange accent
+   ========================================================= */
+
+.coffee-stage {
+  --machine: #d4cabc;       /* warm cream metal */
+  --machine-dark: #8a8278;
+  --machine-shadow: #5e5750;
+  --tray: #1f1f1f;
+  --tray-edge: #2a2a2a;
+  --crema: #c98b5b;          /* coffee crema */
+  --coffee: #4a2a18;         /* coffee liquid */
+  --coffee-dark: #2b1610;
+  --steam: rgba(255, 240, 230, 0.5);
+  --accent-warm: #ff8a4d;
+
+  position: relative;
+  width: 280px;
+  height: 320px;
+  margin: 0 auto;
+  user-select: none;
+}
+
+/* Machine body */
+.cm-machine {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 230px;
+  background: linear-gradient(180deg, var(--machine) 0%, #b8aea0 100%);
+  border-radius: 18px 18px 12px 12px;
+  box-shadow:
+    inset 0 -2px 0 rgba(0, 0, 0, 0.15),
+    inset 0 2px 0 rgba(255, 255, 255, 0.4),
+    0 24px 48px rgba(0, 0, 0, 0.4),
+    0 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Top control panel */
+.cm-panel {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 60px;
+  background: linear-gradient(180deg, #2a2622 0%, #1a1714 100%);
+  border-radius: 8px;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+/* Indicator lights */
+.cm-lights {
+  display: flex;
+  gap: 6px;
+}
+.cm-light {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #555;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+.cm-light.on-power {
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981, inset 0 1px 1px rgba(0, 0, 0, 0.3);
+  animation: cm-pulse 2s ease-in-out infinite;
+}
+.cm-light.on-brew {
+  background: var(--accent-warm);
+  box-shadow: 0 0 10px var(--accent-warm), inset 0 1px 1px rgba(0, 0, 0, 0.3);
+  animation: cm-pulse 1.2s ease-in-out infinite;
+}
+@keyframes cm-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Pressure gauge */
+.cm-gauge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #f5ede0, #b8aea0);
+  border: 2px solid #2a2622;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.cm-gauge::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  height: 10px;
+  background: #d23f1c;
+  transform-origin: bottom center;
+  transform: translate(-50%, -100%) rotate(-30deg);
+  border-radius: 1px;
+  animation: cm-gauge-needle 4s ease-in-out infinite;
+}
+.cm-gauge::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #2a2622;
+  transform: translate(-50%, -50%);
+}
+@keyframes cm-gauge-needle {
+  0%, 100% { transform: translate(-50%, -100%) rotate(-30deg); }
+  50% { transform: translate(-50%, -100%) rotate(40deg); }
+}
+
+/* Display */
+.cm-display {
+  width: 56px;
+  height: 24px;
+  background: #0a0a0a;
+  border-radius: 4px;
+  border: 1px solid #000;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
+  display: grid;
+  place-items: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  color: var(--accent-warm);
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 4px var(--accent-warm);
+}
+
+/* Brand plate */
+.cm-brand {
+  position: absolute;
+  top: 92px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--machine-shadow);
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+.cm-brand-sub {
+  position: absolute;
+  top: 108px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7px;
+  color: var(--machine-shadow);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* Portafilter / spout */
+.cm-spout-house {
+  position: absolute;
+  top: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 36px;
+  background: linear-gradient(180deg, #4a4540 0%, #2a2622 100%);
+  border-radius: 6px 6px 4px 4px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+}
+.cm-spout {
+  position: absolute;
+  top: 158px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 18px;
+  background: linear-gradient(180deg, #2a2622 0%, #1a1714 100%);
+  border-radius: 0 0 8px 8px;
+  box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.6);
+}
+.cm-spout::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 4px;
+  background: #1a1714;
+  border-radius: 0 0 4px 4px;
+}
+
+/* Coffee stream */
+.cm-stream {
+  position: absolute;
+  top: 178px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 0;
+  background: linear-gradient(180deg, var(--coffee) 0%, var(--accent-warm) 100%);
+  border-radius: 2px;
+  animation: cm-stream 4s ease-in-out infinite;
+  animation-delay: 0.6s;
+  box-shadow: 0 0 4px rgba(255, 138, 77, 0.3);
+}
+@keyframes cm-stream {
+  0%, 20% { height: 0; opacity: 0; }
+  25% { height: 8px; opacity: 1; }
+  30%, 75% { height: 58px; opacity: 1; }
+  85% { height: 8px; opacity: 0.6; }
+  90%, 100% { height: 0; opacity: 0; }
+}
+
+/* Side handle */
+.cm-handle {
+  position: absolute;
+  top: 138px;
+  left: calc(50% - 78px);
+  width: 30px;
+  height: 22px;
+  background: linear-gradient(90deg, #2a2622 0%, #4a4540 100%);
+  border-radius: 4px 0 0 4px;
+}
+.cm-handle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 6px;
+  background: #1a1714;
+  border-radius: 3px;
+}
+
+/* Steam wand (right side) */
+.cm-steam-wand {
+  position: absolute;
+  top: 130px;
+  right: calc(50% - 96px);
+  width: 4px;
+  height: 50px;
+  background: linear-gradient(180deg, #c5bba8 0%, #8a8278 100%);
+  border-radius: 2px;
+  transform-origin: top center;
+  transform: rotate(15deg);
+}
+.cm-steam-wand::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: -2px;
+  width: 8px;
+  height: 6px;
+  background: #2a2622;
+  border-radius: 2px;
+}
+
+/* Drip tray + cup */
+.cm-tray {
+  position: absolute;
+  bottom: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240px;
+  height: 28px;
+  background: linear-gradient(180deg, var(--tray) 0%, var(--tray-edge) 100%);
+  border-radius: 4px;
+  box-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+.cm-tray::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, #0a0a0a 0, #0a0a0a 4px, transparent 4px, transparent 8px);
+  border-radius: 1px;
+  opacity: 0.6;
+}
+
+.cm-base {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 18px;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-dim, #c2552a) 100%);
+  border-radius: 4px;
+  box-shadow:
+    0 4px 12px rgba(255, 107, 53, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.cm-base-tag {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 8px;
+  color: #0a0a0a;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  z-index: 2;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Cup */
+.cm-cup {
+  position: absolute;
+  bottom: 56px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 36px;
+  background: linear-gradient(180deg, #f5ede0 0%, #d4cabc 100%);
+  border-radius: 0 0 12px 12px;
+  box-shadow:
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15),
+    0 2px 0 rgba(0, 0, 0, 0.2);
+}
+.cm-cup::before {
+  /* coffee liquid */
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  right: 6px;
+  height: 0;
+  background: linear-gradient(180deg, var(--crema) 0%, var(--coffee) 30%, var(--coffee-dark) 100%);
+  border-radius: 0 0 8px 8px;
+  animation: cm-cup-fill 4s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+.cm-cup::after {
+  /* handle */
+  content: "";
+  position: absolute;
+  top: 6px;
+  right: -10px;
+  width: 12px;
+  height: 18px;
+  border: 3px solid #d4cabc;
+  border-left: 0;
+  border-radius: 0 12px 12px 0;
+}
+@keyframes cm-cup-fill {
+  0%, 22% { height: 0; }
+  35% { height: 6px; }
+  70% { height: 24px; }
+  85% { height: 22px; }
+  100% { height: 18px; }
+}
+
+/* Steam */
+.cm-steam {
+  position: absolute;
+  bottom: 92px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 80px;
+  pointer-events: none;
+  opacity: 0;
+  animation: cm-steam-show 4s ease-in-out infinite;
+}
+@keyframes cm-steam-show {
+  0%, 60% { opacity: 0; }
+  72%, 95% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.cm-steam span {
+  position: absolute;
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--steam);
+  border-radius: 50%;
+  filter: blur(2px);
+  animation: cm-steam-rise 3s ease-out infinite;
+}
+.cm-steam span:nth-child(1) { left: 14px; animation-delay: 0s; }
+.cm-steam span:nth-child(2) { left: 26px; animation-delay: 0.4s; }
+.cm-steam span:nth-child(3) { left: 38px; animation-delay: 0.8s; }
+.cm-steam span:nth-child(4) { left: 20px; animation-delay: 1.2s; }
+.cm-steam span:nth-child(5) { left: 32px; animation-delay: 1.6s; }
+@keyframes cm-steam-rise {
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-70px) translateX(8px) scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* Floor shadow */
+.cm-shadow {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240px;
+  height: 12px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.5), transparent 70%);
+  filter: blur(4px);
+}

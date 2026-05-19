@@ -1,120 +1,50 @@
-import { Link } from "react-router-dom";
+import { posts } from "../data/portfolio";
+import { Icon } from "../components/Icon";
 
-const Blog = () => {
-  const posts = [
-    {
-      title: "Introdução ao React Hooks",
-      excerpt:
-        "Aprenda como utilizar os Hooks do React para gerenciar estado e efeitos colaterais em componentes funcionais.",
-      date: "2024-03-15",
-      readTime: "5 min",
-      category: "React",
-      url: "/blog/introducao-react-hooks",
-    },
-    {
-      title: "TypeScript: Por que usar?",
-      excerpt:
-        "Descubra os benefícios de usar TypeScript em seus projetos e como ele pode melhorar a qualidade do seu código.",
-      date: "2024-03-10",
-      readTime: "7 min",
-      category: "TypeScript",
-      url: "/blog/typescript-por-que-usar",
-    },
-    {
-      title: "Tailwind CSS: Estilizando com utilidades",
-      excerpt:
-        "Um guia completo sobre como utilizar o Tailwind CSS para criar interfaces modernas e responsivas.",
-      date: "2024-03-05",
-      readTime: "6 min",
-      category: "CSS",
-      url: "/blog/tailwind-css-estilizando-com-utilidades",
-    },
-  ];
-
+export default function Blog() {
   return (
-    <div className="min-h-screen pt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="mb-8">
-          <h1
-            className="hover-underline font-bold px-5"
-            style={
-              {
-                "--hover-underline-gradient":
-                  "linear-gradient(to right, #3b82f6, #9333ea)",
-              } as React.CSSProperties
-            }
-          >
-            <span
-              style={{
-                background: "linear-gradient(to right, #f6a472, #ff914d)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              Blog
-            </span>
-          </h1>
+    <section id="blog">
+      <div className="container">
+        <div
+          className="reveal"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "end",
+            marginBottom: 48,
+            flexWrap: "wrap",
+            gap: 24,
+          }}
+        >
+          <div>
+            <span className="section-label">~/blog/posts/</span>
+            <h2 className="section-title">
+              Notas, ensaios,<br />
+              <em>tutoriais.</em>
+            </h2>
+          </div>
+          <a href="#" className="btn btn-ghost" data-hover>
+            Todos os posts {Icon.arrowRight}
+          </a>
         </div>
 
-        <div className="grid gap-8">
-          {posts.map((post) => (
-            <BlogPost key={post.title} {...post} />
+        <div className="blog-list reveal">
+          {posts.map((p) => (
+            <a href="#" key={p.num} className="blog-post" data-hover>
+              <span className="blog-num">{p.num} · post</span>
+              <div className="blog-title-wrap">
+                <h3 className="blog-title">{p.title}</h3>
+                <span className="blog-excerpt">{p.excerpt}</span>
+              </div>
+              <span className="blog-meta">
+                <strong>{p.date}</strong>
+                {p.read}
+              </span>
+              <span className="blog-arrow">{Icon.arrowRight}</span>
+            </a>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-const BlogPost = ({
-  title,
-  excerpt,
-  date,
-  readTime,
-  category,
-  url,
-}: {
-  title: string;
-  excerpt: string;
-  date: string;
-  readTime: string;
-  category: string;
-  url: string;
-}) => (
-  <article className="bg-whiterounded-lg shadow-lg p-6  transition duration-300 hover:scale-101 border border:opacity-90">
-    <div className="flex items-center gap-4 mb-4">
-      <span className="px-3 py-1 bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-white rounded-full text-sm">
-        {category}
-      </span>
-      <span className="text-gray-500 dark:text-gray-400 text-sm">
-        {new Date(date).toLocaleDateString("pt-BR")}
-      </span>
-      <span className="text-gray-500 dark:text-gray-400 text-sm">
-        {readTime} de leitura
-      </span>
-    </div>
-
-    <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">
-      <span
-        style={{
-          background: "linear-gradient(to right, #f6a472, #ff914d)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        }}
-      >
-        {title}
-      </span>
-    </h2>
-
-    <p className="text-gray-600 dark:text-gray-300 mb-4">{excerpt}</p>
-
-    <Link
-      to={url}
-      className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium"
-    >
-      Ler mais →
-    </Link>
-  </article>
-);
-
-export default Blog;
+}

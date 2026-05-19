@@ -1,108 +1,46 @@
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { navItems } from "../data/portfolio";
 
-const Navbar = () => {
+type Props = { active: string };
+
+export default function Navbar({ active }: Props) {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const on = () => setScrolled(window.scrollY > 30);
+    on();
+    window.addEventListener("scroll", on, { passive: true });
+    return () => window.removeEventListener("scroll", on);
+  }, []);
+
   return (
-    <div id="header">
-      <nav className="fixed top-0 w-full z-50 ">
-        <div className="mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex-shrink-1">
-              <Link to="/">
-                <p
-                  className="font-bold"
-                  style={{
-                    background: "linear-gradient(to right, #f6a472, #ff914d)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
-                  LN
-                </p>
-              </Link>
-            </div>
+    <nav className={`nav ${scrolled ? "is-scrolled" : ""}`}>
+      <a href="#home" className="nav-brand" data-hover>
+        <span className="nav-brand-mark">L</span>
+        <span className="nav-brand-meta">
+          <span>Lucas Natali</span>
+          <small>v2.6 — 2026</small>
+        </span>
+      </a>
 
-            {/* Desktop menu */}
-            <div className="md:flex flex-1 justify-end">
-              <div className="flex items-center space-x-8">
-                <NavLink to="/sobre">
-                  <div>
-                    <p
-                      className="font-bold"
-                      style={{
-                        background:
-                          "linear-gradient(to right, #f6a472, #ff914d)",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                      }}
-                    >
-                      Sobre
-                    </p>
-                  </div>
-                </NavLink>
-                <NavLink to="/projetos">
-                  <p
-                    className="font-bold"
-                    style={{
-                      background: "linear-gradient(to right, #f6a472, #ff914d)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
-                  >
-                    Projetos
-                  </p>
-                </NavLink>
-                <NavLink to="/blog">
-                  <p
-                    className="font-bold"
-                    style={{
-                      background: "linear-gradient(to right, #f6a472, #ff914d)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
-                  >
-                    Blog
-                  </p>
-                </NavLink>
-                <NavLink to="/contato">
-                  <p
-                    className="font-bold"
-                    style={{
-                      background: "linear-gradient(to right, #f6a472, #ff914d)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
-                  >
-                    Contato
-                  </p>
-                </NavLink>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </div>
+      <div className="nav-links">
+        {navItems.map((it) => (
+          <a
+            key={it.id}
+            href={`#${it.id}`}
+            className={`nav-link ${active === it.id ? "is-active" : ""}`}
+            data-hover
+          >
+            <span className="nav-link-num">{it.num}</span>
+            {it.label}
+          </a>
+        ))}
+      </div>
+
+      <a href="#contato" className="nav-cta" data-hover>
+        <span className="nav-cta-dot" />
+        Disponível para projetos
+      </a>
+    </nav>
   );
-};
-
-const NavLink = ({
-  to,
-  children,
-}: {
-  to: string;
-  children: React.ReactNode;
-}) => (
-  <Link
-    to={to}
-    className="hover-navbar relative text-gray-300 px-3 py-2 rounded-md text-sm font-medium transition-colors hover:text-white"
-    style={
-      {
-        "--hover-navbar-gradient":
-          "linear-gradient(to right, #3b82f6, #9333ea)",
-      } as React.CSSProperties
-    }
-  >
-    {children}
-  </Link>
-);
-
-export default Navbar;
+}
