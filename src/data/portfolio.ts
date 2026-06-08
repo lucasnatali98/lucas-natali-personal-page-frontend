@@ -40,7 +40,7 @@ export const profile = {
   role: "Engenheiro de Software",
   roleAlt: "Full-Stack Developer",
   tagline:
-    "Construindo produtos web com foco em escala, performance e detalhe.",
+    "Construindo produtos web com foco em escala, performance e experiência do usuário.",
   location: "Minas Gerais, Brasil",
   available: "Disponível para projetos · Q2 2026",
   email: "lucasnatali16@gmail.com",
@@ -57,16 +57,21 @@ export const stats: Stat[] = [
 
 export const skills: Record<SkillGroup, Skill[]> = {
   Frontend: [
+    { name: "HTML5/CSS3", years: "5y", level: 0.99 },
     { name: "React", years: "5y", level: 0.95 },
     { name: "TypeScript", years: "4y", level: 0.92 },
     { name: "Next.js", years: "3y", level: 0.88 },
+    { name: "Angular", years: "3y", level: 0.77 },
     { name: "Tailwind CSS", years: "3y", level: 0.9 },
     { name: "Vite / Webpack", years: "4y", level: 0.78 },
   ],
   Backend: [
     { name: "Node.js", years: "5y", level: 0.93 },
-    { name: "Python", years: "4y", level: 0.82 },
-    { name: "Java", years: "3y", level: 0.75 },
+    { name: "PHP/Laravel", years: "4y", level: 0.9 },
+    { name: "Typescript", years: "4y", level: 0.82 },
+    { name: "Express.js", years: "5y", level: 0.99 },
+    { name: "Prisma ORM", years: "5y", level: 0.99 },
+    { name: "Vitest/Jest", years: "3y", level: 0.75 },
     { name: "PostgreSQL", years: "4y", level: 0.85 },
     { name: "REST · GraphQL", years: "4y", level: 0.88 },
   ],
@@ -114,8 +119,7 @@ export const projects: Project[] = [
   {
     tag: "Plataforma · 2025",
     title: "Commerce Cloud",
-    desc:
-      "Plataforma de e-commerce headless com carrinho, gateway de pagamentos e CMS embarcado. Multi-tenant, suporta 5k pedidos/dia.",
+    desc: "Plataforma de e-commerce headless com carrinho, gateway de pagamentos e CMS embarcado. Multi-tenant, suporta 5k pedidos/dia.",
     techs: ["Next.js", "Node.js", "PostgreSQL", "Stripe", "Redis"],
     label: "01 · plataforma",
     cover: "ecommerce",
@@ -123,8 +127,7 @@ export const projects: Project[] = [
   {
     tag: "Produto · 2024",
     title: "Taskforce",
-    desc:
-      "Gerenciador de tarefas colaborativo em tempo real com drag-and-drop, presença ao vivo e sincronização offline-first.",
+    desc: "Gerenciador de tarefas colaborativo em tempo real com drag-and-drop, presença ao vivo e sincronização offline-first.",
     techs: ["React", "Firebase", "Tailwind", "CRDT"],
     label: "02 · produto",
     cover: "task",
@@ -132,8 +135,7 @@ export const projects: Project[] = [
   {
     tag: "Open Source · 2024",
     title: "Type-Forge CLI",
-    desc:
-      "CLI para gerar tipos TypeScript a partir de schemas OpenAPI/Prisma com validação Zod integrada. 480+ stars no GitHub.",
+    desc: "CLI para gerar tipos TypeScript a partir de schemas OpenAPI/Prisma com validação Zod integrada. 480+ stars no GitHub.",
     techs: ["TypeScript", "Node.js", "Commander"],
     label: "03 · open-source",
     cover: "cli",
@@ -141,8 +143,7 @@ export const projects: Project[] = [
   {
     tag: "Design System · 2023",
     title: "Atlas UI",
-    desc:
-      "Sistema de design interno com 60+ componentes acessíveis, documentação em Storybook e tokens cross-platform (web/iOS/Android).",
+    desc: "Sistema de design interno com 60+ componentes acessíveis, documentação em Storybook e tokens cross-platform (web/iOS/Android).",
     techs: ["React", "Storybook", "Style Dictionary"],
     label: "04 · design-system",
     cover: "design",

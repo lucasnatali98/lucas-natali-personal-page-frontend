@@ -13,7 +13,7 @@ export default function TerminalSkills() {
             <em>todos os dias.</em>
           </h2>
           <p className="section-sub">
-            {"// não acredito em \"stack universal\", mas tem ferramentas que voltam comigo em quase todo projeto."}
+            {"// não acredito em \"stack universal\", mas tem ferramentas que estão comigo em quase todo projeto."}
           </p>
         </div>
 

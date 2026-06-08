@@ -1,6 +1,5 @@
 import { useState, useRef, type FormEvent } from "react";
 import { Icon } from "../components/Icon";
-import api from "../lib/api";
 
 export default function Newsletter() {
   const [status, setStatus] = useState<"idle" | "loading" | "sent" | "error">("idle");
@@ -13,23 +12,13 @@ export default function Newsletter() {
     setStatus("loading");
     setErrorMsg("");
 
-    try {
-      await api.post("/newsletter/subscribe", {
-        name: nameRef.current?.value,
-        email: emailRef.current?.value,
-      });
-      setStatus("sent");
-      setTimeout(() => {
-        setStatus("idle");
-        if (nameRef.current) nameRef.current.value = "";
-        if (emailRef.current) emailRef.current.value = "";
-      }, 3000);
-    } catch (err: any) {
-      const msg = err?.response?.data?.error ?? "Erro ao inscrever. Tente novamente.";
-      setErrorMsg(msg);
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 4000);
-    }
+    await new Promise((r) => setTimeout(r, 800));
+    setStatus("sent");
+    setTimeout(() => {
+      setStatus("idle");
+      if (nameRef.current) nameRef.current.value = "";
+      if (emailRef.current) emailRef.current.value = "";
+    }, 3000);
   };
 
   const busy = status === "loading" || status === "sent";
