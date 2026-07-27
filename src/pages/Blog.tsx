@@ -21,7 +21,7 @@ export default function Blog() {
           <div>
             <span className="section-label">~/blog/posts/</span>
             <h2 className="section-title">
-              Notas, ensaios,<br />
+              Publicações, histórias,<br />
               <em>tutoriais.</em>
             </h2>
           </div>

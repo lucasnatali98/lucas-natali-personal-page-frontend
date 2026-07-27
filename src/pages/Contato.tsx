@@ -22,8 +22,8 @@ export default function Contato() {
             <em>Adoraria ouvir.</em>
           </h2>
           <p className="section-sub">
-            Respondo todo email em até 24h úteis. Para projetos longos,
-            prefiro uma call de 20 minutos antes — vai por mim, vale a pena.
+            Respondo seu email em até 24h. Para projetos longos,
+            marcamos uma reunião para conhecer sua ideia — vai por mim, vale a pena.
           </p>
         </div>
 

@@ -10,8 +10,7 @@ export function Footer() {
               Lucas <em>Natali</em>
             </div>
             <p className="footer-tag">
-              Engenheiro de software construindo produtos web com intenção e
-              rigor. De Minas Gerais para o mundo.
+              Engenheiro de software construindo soluções que geram valor. De Minas Gerais para o Mundo.
             </p>
           </div>
           <div>
@@ -32,21 +31,12 @@ export function Footer() {
             <div className="footer-col-title">Social</div>
             <a href={profile.github} target="_blank" rel="noreferrer" className="footer-link" data-hover>GitHub ↗</a>
             <a href={profile.linkedin} target="_blank" rel="noreferrer" className="footer-link" data-hover>LinkedIn ↗</a>
-            <a href="#" className="footer-link" data-hover>Twitter ↗</a>
-            <a href="#" className="footer-link" data-hover>RSS · Blog</a>
-          </div>
-          <div>
-            <div className="footer-col-title">Currículo</div>
-            <a href="#" className="footer-link" data-hover>CV — PT ↓</a>
-            <a href="#" className="footer-link" data-hover>CV — EN ↓</a>
-            <a href={`mailto:${profile.email}`} className="footer-link" data-hover>Email →</a>
+            <a href={profile.instagram} target="_blank" rel="noreferrer" className="footer-link" data-hover>Instagram ↗</a>
           </div>
         </div>
 
-        <div className="footer-big">Natali</div>
-
         <div className="footer-bottom">
-          <span>© 2026 Lucas Natali · Feito com café e atenção</span>
+          <span>© 2026 Lucas Natali · Feito com café e disposição</span>
           <span>v2.6 · last deploy abr · 19 / 2026</span>
         </div>
       </div>

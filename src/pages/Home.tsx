@@ -146,8 +146,8 @@ const TERM_LINES: TermLine[] = [
   { text: '  "name": "Lucas Natali",', kind: "output", instant: true },
   { text: '  "role": "Full-Stack Engineer",', kind: "output", instant: true },
   { text: '  "location": "Minas Gerais · BR · UTC−3",', kind: "output", instant: true },
-  { text: '  "years": 6,', kind: "output", instant: true },
-  { text: '  "focus": ["React", "TS", "Node", "AWS"],', kind: "output", instant: true },
+  { text: '  "years": 5+,', kind: "output", instant: true },
+  { text: '  "focus": ["Typescript", "Node.js", "React","AWS", "PostgreSQL"],', kind: "output", instant: true },
   { text: '  "motto": "ship with intent.",', kind: "output", instant: true },
   { text: '  "status": "open-to-work"', kind: "output", instant: true },
   { text: "}", kind: "output", instant: true },
@@ -267,7 +267,7 @@ export default function Home() {
             <div className="hero-stack" style={{ marginLeft: "auto" }}>
               <span className="hero-stack-label">// stack ·</span>
               <div className="hero-stack-icons">
-                {["TS", "JS", "Re", "Nx", "Nd", "PG", "Dk", "AW"].map((t) => (
+                {["TS", "JS", "React", "AWS", "SQL", "PHP"].map((t) => (
                   <span key={t} className="tech-chip" data-hover>{t}</span>
                 ))}
               </div>
