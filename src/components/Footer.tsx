@@ -19,7 +19,7 @@ export function Footer() {
               { label: "Início", id: "home" },
               { label: "Sobre", id: "sobre" },
               { label: "Projetos", id: "projetos" },
-              { label: "Blog", id: "blog" },
+              // { label: "Blog", id: "blog" }, desativado: seção de posts sem integração com backend
               { label: "Contato", id: "contato" },
             ].map(({ label, id }) => (
               <a key={id} href={`#${id}`} className="footer-link" data-hover>

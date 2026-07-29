@@ -7,8 +7,8 @@ import Sobre from "./pages/Sobre";
 import TerminalSkills from "./pages/TerminalSkills";
 import TerminalExperiencias from "./pages/TerminalExperiencias";
 import Projetos from "./pages/Projetos";
-import Blog from "./pages/Blog";
-import Newsletter from "./pages/Newsletter";
+// import Blog from "./pages/Blog"; // desativado: sem integração com backend ainda
+// import Newsletter from "./pages/Newsletter"; // desativado: sem integração com backend ainda
 import Contato from "./pages/Contato";
 import { navItems } from "./data/portfolio";
 
@@ -47,8 +47,8 @@ function App() {
         <TerminalSkills />
         <TerminalExperiencias />
         <Projetos />
-        <Blog />
-        <Newsletter />
+        {/* <Blog /> desativado: sem integração com backend ainda */}
+        {/* <Newsletter /> desativado: sem integração com backend ainda */}
         <Contato />
         <Footer />
       </div>
